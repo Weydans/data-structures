@@ -7,13 +7,13 @@ Author: Weydans Barros
 Date:	16/12/2021
 
 Compile:
-gcc -I./include test/test.c -o test-linked-list 
+gcc -I./include source/linked-list.c test/test.c -o test-linked-list 
 
 ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <linked-list.h>
+#include "linked-list.h"
 
 /* *********************************************************************** */
 
