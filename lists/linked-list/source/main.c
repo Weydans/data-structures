@@ -7,7 +7,7 @@ Author: Weydans Barros
 Date:	16/12/2021
 
 Compile:
-gcc main.c -o maini
+gcc source/main.c -o main
 
 ************************************************************************** */
 
