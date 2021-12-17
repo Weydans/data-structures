@@ -25,6 +25,12 @@ LINKLED_LIST* linked_list_new ()
 	return list;
 }
 
+int linked_list_empty ( LINKLED_LIST* list )
+{
+	if ( !list ) return NULL_POINTER;
+	return ( list->length == 0 );	
+}
+
 int linked_list_length ( LINKLED_LIST* list )
 {
 	if ( !list ) return NULL_POINTER;
