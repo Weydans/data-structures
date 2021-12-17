@@ -22,6 +22,7 @@ gcc -I./include source/linked-list.c test/test.c -o test-linked-list
 			exit(c);\
 		}
 
+void assert_bool ( int expected, int given, char* message );
 void assert_int ( int expected, int given );
 void test_linked_list_new ( LINKLED_LIST* list );
 
@@ -43,6 +44,11 @@ int main ( int argc, char* argv[] )
 
 /* *********************************************************************** */
 
+void assert_bool ( int expected, int given, char* message )
+{
+	if ( expected != given ) ERROR( message, -1 );
+}
+
 void assert_int ( int expected, int given )
 {
 	char message[50 + 1];
@@ -56,9 +62,16 @@ void assert_int ( int expected, int given )
 
 void test_linked_list_new ( LINKLED_LIST* list )
 {
+	int empty  = 1;
+	int length = 0;
+
 	if ( !list ) ERROR("Fail to create 'linked-list'", -1);
 	
-	assert_int( 0, linked_list_length( list ) );
+	assert_int( length, linked_list_length( list ) );
+	
+	assert_bool( empty, 
+				linked_list_empty( list ), 
+				"'linked-list' must be empty" );
 }
 
 
