@@ -34,7 +34,13 @@ int main ( int argc, char* argv[] )
 	LINKLED_LIST* list = linked_list_new();
 	
 	test_linked_list_new( list );
+	
+	assert_bool( 1, 
+				linked_list_empty( list ), 
+				"'linked-list' must be empty");
 
+	assert_int( 0, linked_list_length( list ) );
+	
 	linked_list_add( list, &add_first_int );
 	
 	assert_int( 1, linked_list_length( list ) );
@@ -62,16 +68,7 @@ void assert_int ( int expected, int given )
 
 void test_linked_list_new ( LINKLED_LIST* list )
 {
-	int empty  = 1;
-	int length = 0;
-
 	if ( !list ) ERROR("Fail to create 'linked-list'", -1);
-	
-	assert_int( length, linked_list_length( list ) );
-	
-	assert_bool( empty, 
-				linked_list_empty( list ), 
-				"'linked-list' must be empty" );
 }
 
 
