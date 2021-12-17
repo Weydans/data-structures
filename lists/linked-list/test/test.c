@@ -29,20 +29,19 @@ void test_linked_list_new ( LINKLED_LIST* list );
 
 int main ( int argc, char* argv[] )
 {
+	int add_first_int = 3;
 	LINKLED_LIST* list = linked_list_new();
+	
 	test_linked_list_new( list );
 
-	assert_int( 0, linked_list_length( list ) );
+	linked_list_add( list, &add_first_int );
+	
+	assert_int( 1, linked_list_length( list ) );
 
 	return 0;
 }
 
 /* *********************************************************************** */
-
-void test_linked_list_new ( LINKLED_LIST* list )
-{
-	if ( !list ) ERROR("Fail to create 'linked-list'", -1);		
-}
 
 void assert_int ( int expected, int given )
 {
@@ -55,6 +54,12 @@ void assert_int ( int expected, int given )
 	}
 }
 
+void test_linked_list_new ( LINKLED_LIST* list )
+{
+	if ( !list ) ERROR("Fail to create 'linked-list'", -1);
+	
+	assert_int( 0, linked_list_length( list ) );
+}
 
 
 
