@@ -7,7 +7,7 @@ VALGRIND=valgrind --leak-check=full
 all:
 	$(CC) $(FLAGS) $(INCLUDE) $(SOURCE) test/test.c -o test-linked-list
 
-test:
+run:
 	$(VALGRIND) ./test-linked-list
 
 clear:
