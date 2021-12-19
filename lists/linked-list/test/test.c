@@ -31,6 +31,8 @@ void test_linked_list_new ( LINKLED_LIST* list );
 int main ( int argc, char* argv[] )
 {
 	int add_first_int = 3;
+	int add_second_int = 5;
+
 	LINKLED_LIST* list = linked_list_new();
 	
 	test_linked_list_new( list );
@@ -44,6 +46,10 @@ int main ( int argc, char* argv[] )
 	linked_list_add( list, &add_first_int );
 	
 	assert_int( 1, linked_list_length( list ) );
+
+	linked_list_add( list, &add_second_int);
+
+	assert_int( 2, linked_list_length( list ) );
 
 	return 0;
 }
