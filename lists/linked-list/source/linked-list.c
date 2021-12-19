@@ -61,11 +61,29 @@ int linked_list_add( LINKLED_LIST* list, void* item )
 
 		while ( swap = new_node->next ) new_node = new_node->next;
 
-		new_node->data = item;
-		new_node->next = NULL;
+		new_node->next = ( NODE* ) calloc( 1, sizeof( NODE ) );
+
+		new_node->next->data = item;
+		new_node->next->next = NULL;
 	}
 
 	list->length++;
 
 	return 0;
 }
+
+void* linked_list_iterator ( LINKLED_LIST* list )
+{
+	static NODE* current_node = NULL;
+
+	if ( !list ) return NULL;
+
+	if ( !current_node ) 
+		current_node = list->head;
+
+	else if ( current_node ) 
+		current_node = current_node->next;
+	
+	return current_node ? current_node->data : NULL;
+}
+
