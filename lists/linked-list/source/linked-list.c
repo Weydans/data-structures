@@ -39,10 +39,13 @@ int linked_list_length ( LINKLED_LIST* list )
 
 int linked_list_add( LINKLED_LIST* list, void* item )
 {
+	NODE* swap = NULL;
+	NODE* new_node = NULL;
+
 	if ( !list ) return NULL_POINTER;
 	if ( !item ) return INVALID_ITEM;
 
-	if ( list->length == 0 ) 
+	if ( linked_list_empty( list ) ) 
 	{
 		list->head = (NODE*) calloc( 1, sizeof( NODE ) );
 	
@@ -51,8 +54,18 @@ int linked_list_add( LINKLED_LIST* list, void* item )
 		list->head->data = item;
 		list->head->next = NULL;
 
-		list->length++;
+	} 
+	else if ( !linked_list_empty( list ) )
+	{
+		new_node = list->head;
+
+		while ( swap = new_node->next ) new_node = new_node->next;
+
+		new_node->data = item;
+		new_node->next = NULL;
 	}
+
+	list->length++;
 
 	return 0;
 }
