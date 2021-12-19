@@ -11,5 +11,6 @@ LINKLED_LIST* linked_list_new ();
 int linked_list_empty ( LINKLED_LIST* list ); 
 int linked_list_length ( LINKLED_LIST* list);
 int linked_list_add ( LINKLED_LIST* list, void* item );
+void* linked_list_iterator ( LINKLED_LIST* list );
 
 #endif
