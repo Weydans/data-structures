@@ -1,5 +1,5 @@
 CC=gcc
-FLAGS=-Wall -g 
+FLAGS=-g 
 INCLUDE=-I./include
 SOURCE=source/linked-list.c
 VALGRIND=valgrind --leak-check=full
