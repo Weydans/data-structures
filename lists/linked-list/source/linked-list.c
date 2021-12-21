@@ -87,3 +87,23 @@ void* linked_list_iterator ( LINKED_LIST* list )
 	return current_node ? current_node->data : NULL;
 }
 
+void* linked_list_get_at ( LINKED_LIST* list, int position )
+{
+	int i 	   = 0;
+	NODE* swap = NULL;
+
+	if ( !list ||
+		 position <= 0 ||
+		 linked_list_empty( list ) ||
+		 position > linked_list_length( list ) )
+			return NULL;
+
+	swap = list->head;
+
+	for ( i = 0; i < linked_list_length( list ); i++, swap = swap->next )
+		if ( position == (i + 1) ) 
+			return swap->data;
+}
+
+
+
