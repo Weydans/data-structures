@@ -25,6 +25,7 @@ gcc -I./include source/linked-list.c test/test.c -o test-linked-list
 void test_linked_list_new ( LINKED_LIST* list );
 void test_linked_list_empty ( int expected, int given );
 void test_linked_list_length ( int expected, int given );
+void test_linked_list_get_at ( void* expected, void* given );
 
 /* *********************************************************************** */
 
@@ -37,14 +38,14 @@ int main ( int argc, char* argv[] )
 	LINKED_LIST* list = linked_list_new();
 	
 	test_linked_list_new( list );
-	
 	test_linked_list_empty( 1, linked_list_empty( list ) );
-
 	test_linked_list_length( 0, linked_list_length( list ) );
 
 	linked_list_add( list, &add_first_int );
-	
+
+	test_linked_list_empty( 0, linked_list_empty( list ) );
 	test_linked_list_length( 1, linked_list_length( list ) );
+	test_linked_list_get_at( &add_first_int, linked_list_get_at( list, 1 ) );
 
 	linked_list_add( list, &add_second_int);
 
@@ -87,4 +88,14 @@ void test_linked_list_length ( int expected, int given )
 	}
 }
 
+void test_linked_list_get_at ( void* expected, void* given )
+{
+	char message[50 + 1];
+
+	if ( expected != given )
+	{	
+		sprintf( message, "Erro: %p expected, %p given", expected, given );
+		ERROR( message, -1 );
+	}
+}
 
