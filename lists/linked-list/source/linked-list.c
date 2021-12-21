@@ -63,6 +63,8 @@ int linked_list_add( LINKED_LIST* list, void* item )
 
 		new_node->next = ( NODE* ) calloc( 1, sizeof( NODE ) );
 
+		if ( !new_node->next ) return ITEM_MEMMORY_ALLOCATION_ERROR;
+
 		new_node->next->data = item;
 		new_node->next->next = NULL;
 	}
