@@ -8,14 +8,14 @@ struct NODE {
 	NODE* next;
 };
 
-struct LINKLED_LIST {
+struct LINKED_LIST {
 	int length;
 	NODE* head;
 };
 
-LINKLED_LIST* linked_list_new ()
+LINKED_LIST* linked_list_new ()
 {
-	LINKLED_LIST* list = ( LINKLED_LIST* ) calloc( 1, sizeof( LINKLED_LIST ) ); 
+	LINKED_LIST* list = ( LINKED_LIST* ) calloc( 1, sizeof( LINKED_LIST ) ); 
 
 	if ( !list ) return NULL;
 
@@ -25,19 +25,19 @@ LINKLED_LIST* linked_list_new ()
 	return list;
 }
 
-int linked_list_empty ( LINKLED_LIST* list )
+int linked_list_empty ( LINKED_LIST* list )
 {
 	if ( !list ) return NULL_POINTER;
 	return ( list->length == 0 );	
 }
 
-int linked_list_length ( LINKLED_LIST* list )
+int linked_list_length ( LINKED_LIST* list )
 {
 	if ( !list ) return NULL_POINTER;
 	return list->length;
 }
 
-int linked_list_add( LINKLED_LIST* list, void* item )
+int linked_list_add( LINKED_LIST* list, void* item )
 {
 	NODE* swap = NULL;
 	NODE* new_node = NULL;
@@ -72,7 +72,7 @@ int linked_list_add( LINKLED_LIST* list, void* item )
 	return 0;
 }
 
-void* linked_list_iterator ( LINKLED_LIST* list )
+void* linked_list_iterator ( LINKED_LIST* list )
 {
 	static NODE* current_node = NULL;
 
