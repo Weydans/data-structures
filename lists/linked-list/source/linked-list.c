@@ -107,5 +107,9 @@ void* linked_list_get_at ( LINKED_LIST* list, int position )
 			return swap->data;
 }
 
+void* linked_list_end ( LINKED_LIST* list )
+{
+	return linked_list_get_at( list, linked_list_length( list ) );
+}
 
 
