@@ -32,7 +32,7 @@ void test_linked_list_get_at ( void* expected, void* given );
 int main ( int argc, char* argv[] )
 {
 	int i			= 0;
-	int add_int[] 	= { 3, 5 };
+	int add_int[] 	= { 1, 3, 5, 7, 9 };
 	int* acumulator = NULL;
 
 	LINKED_LIST* list = linked_list_new();
@@ -50,9 +50,20 @@ int main ( int argc, char* argv[] )
 	linked_list_add( list, &add_int[1] );
 
 	test_linked_list_length( 2, linked_list_length( list ) );
+	
+	linked_list_add( list, &add_int[2] );
+	linked_list_add( list, &add_int[3] );
+	linked_list_add( list, &add_int[4] );
+
+	test_linked_list_length( 5, linked_list_length( list ) );
 
 	for ( i = 0; acumulator = (int*) linked_list_iterator( list ); i++ ) 
+	{
 		test_linked_list_get_at( &add_int[i], acumulator );
+		// printf(" %d ->", *acumulator );
+	}
+
+	// puts(" (nil)");
 
 	return 0;
 }
