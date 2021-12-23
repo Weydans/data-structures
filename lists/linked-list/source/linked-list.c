@@ -112,4 +112,10 @@ void* linked_list_end ( LINKED_LIST* list )
 	return linked_list_get_at( list, linked_list_length( list ) );
 }
 
+void* linked_list_start ( LINKED_LIST* list )
+{
+	return linked_list_get_at( list, 1 );
+}
+
+
 
