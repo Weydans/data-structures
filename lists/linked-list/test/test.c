@@ -52,6 +52,7 @@ int main ( int argc, char* argv[] )
 	linked_list_add( list, &add_int[1] );
 
 	test_linked_list_length( 2, linked_list_length( list ) );
+	test_linked_list_get_at( &add_int[1], linked_list_get_at( list, 2 ) );
 	
 	linked_list_add( list, &add_int[2] );
 	linked_list_add( list, &add_int[3] );
