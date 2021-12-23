@@ -22,11 +22,12 @@ gcc -I./include source/linked-list.c test/test.c -o test-linked-list
 			exit(c);\
 		}
 
-void test_linked_list_new ( LINKED_LIST* list );
-void test_linked_list_empty ( int expected, int given );
+void test_linked_list_new 	 ( LINKED_LIST* list );
+void test_linked_list_empty  ( int expected, int given );
 void test_linked_list_length ( int expected, int given );
 void test_linked_list_get_at ( void* expected, void* given );
-void test_linked_list_end ( void* expected, void* given );
+void test_linked_list_end 	 ( void* expected, void* given );
+void test_linked_list_start  ( void* expected, void* given );
 
 /* *********************************************************************** */
 
@@ -63,10 +64,11 @@ int main ( int argc, char* argv[] )
 		test_linked_list_get_at( &add_int[i], acumulator );
 		// printf(" %d ->", *acumulator );
 	}
+	// puts(" (nil)");
 
 	test_linked_list_end( &add_int[4], linked_list_end( list ) );	
 
-	// puts(" (nil)");
+	test_linked_list_start( &add_int[0], linked_list_start( list ) );
 
 	return 0;
 }
@@ -121,4 +123,17 @@ void test_linked_list_end ( void* expected, void* given )
 		ERROR( message, -1 );
 	}
 }
+
+void test_linked_list_start ( void* expected, void* given )
+{
+	char message[50 + 1];
+
+	if ( expected != given )
+	{	
+		sprintf( message, "Erro: %p expected, %p given", expected, given );
+		ERROR( message, -1 );
+	}
+}
+
+
 
