@@ -26,6 +26,7 @@ void test_linked_list_new ( LINKED_LIST* list );
 void test_linked_list_empty ( int expected, int given );
 void test_linked_list_length ( int expected, int given );
 void test_linked_list_get_at ( void* expected, void* given );
+void test_linked_list_end ( void* expected, void* given );
 
 /* *********************************************************************** */
 
@@ -63,6 +64,8 @@ int main ( int argc, char* argv[] )
 		// printf(" %d ->", *acumulator );
 	}
 
+	test_linked_list_end( &add_int[4], linked_list_end( list ) );	
+
 	// puts(" (nil)");
 
 	return 0;
@@ -98,6 +101,17 @@ void test_linked_list_length ( int expected, int given )
 }
 
 void test_linked_list_get_at ( void* expected, void* given )
+{
+	char message[50 + 1];
+
+	if ( expected != given )
+	{	
+		sprintf( message, "Erro: %p expected, %p given", expected, given );
+		ERROR( message, -1 );
+	}
+}
+
+void test_linked_list_end ( void* expected, void* given )
 {
 	char message[50 + 1];
 
