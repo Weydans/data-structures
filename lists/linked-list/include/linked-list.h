@@ -15,5 +15,6 @@ int 	linked_list_add 		( LINKED_LIST* list, void* item );
 void* 	linked_list_iterator 	( LINKED_LIST* list );
 void* 	linked_list_get_at		( LINKED_LIST* list, int position );
 void* 	linked_list_end 		( LINKED_LIST* list );
+void* 	linked_list_start 		( LINKED_LIST* list );
 
 #endif
