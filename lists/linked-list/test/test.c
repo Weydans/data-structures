@@ -31,9 +31,9 @@ void test_linked_list_get_at ( void* expected, void* given );
 
 int main ( int argc, char* argv[] )
 {
-	int add_first_int 	= 3;
-	int add_second_int 	= 5;
-	int* acumulator 	= NULL;
+	int i			= 0;
+	int add_int[] 	= { 3, 5 };
+	int* acumulator = NULL;
 
 	LINKED_LIST* list = linked_list_new();
 	
@@ -41,20 +41,18 @@ int main ( int argc, char* argv[] )
 	test_linked_list_empty( 1, linked_list_empty( list ) );
 	test_linked_list_length( 0, linked_list_length( list ) );
 
-	linked_list_add( list, &add_first_int );
+	linked_list_add( list, &add_int[0] );
 
 	test_linked_list_empty( 0, linked_list_empty( list ) );
 	test_linked_list_length( 1, linked_list_length( list ) );
-	test_linked_list_get_at( &add_first_int, linked_list_get_at( list, 1 ) );
+	test_linked_list_get_at( &add_int[0], linked_list_get_at( list, 1 ) );
 
-	linked_list_add( list, &add_second_int);
+	linked_list_add( list, &add_int[1] );
 
 	test_linked_list_length( 2, linked_list_length( list ) );
 
-	while ( acumulator = (int*) linked_list_iterator( list ) ) 
-	{
-		printf("%d\n", *acumulator);
-	}
+	for ( i = 0; acumulator = (int*) linked_list_iterator( list ); i++ ) 
+		test_linked_list_get_at( &add_int[i], acumulator );
 
 	return 0;
 }
