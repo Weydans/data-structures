@@ -13,6 +13,24 @@ struct LINKED_LIST {
 	NODE* head;
 };
 
+NODE* linked_list_get_node_at ( LINKED_LIST* list, int position )
+{
+	int i 	   = 0;
+	NODE* swap = NULL;
+
+	if ( !list ||
+		 position <= 0 ||
+		 linked_list_empty( list ) ||
+		 position > linked_list_length( list ) )
+			return NULL;
+
+	swap = list->head;
+
+	for ( i = 0; i < linked_list_length( list ); i++, swap = swap->next )
+		if ( position == (i + 1) ) 
+			return swap;
+}
+
 LINKED_LIST* linked_list_new ()
 {
 	LINKED_LIST* list = ( LINKED_LIST* ) calloc( 1, sizeof( LINKED_LIST ) ); 
@@ -91,20 +109,11 @@ void* linked_list_iterator ( LINKED_LIST* list )
 
 void* linked_list_get_at ( LINKED_LIST* list, int position )
 {
-	int i 	   = 0;
-	NODE* swap = NULL;
+	NODE* node = linked_list_get_node_at( list, position );
 
-	if ( !list ||
-		 position <= 0 ||
-		 linked_list_empty( list ) ||
-		 position > linked_list_length( list ) )
-			return NULL;
+	if ( !node ) return NULL;
 
-	swap = list->head;
-
-	for ( i = 0; i < linked_list_length( list ); i++, swap = swap->next )
-		if ( position == (i + 1) ) 
-			return swap->data;
+	return node->data;
 }
 
 void* linked_list_end ( LINKED_LIST* list )
