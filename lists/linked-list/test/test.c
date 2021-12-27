@@ -26,6 +26,7 @@ void test_linked_list_new 	 ( LINKED_LIST* list );
 void test_linked_list_empty  ( int expected, int given );
 void test_linked_list_length ( int expected, int given );
 void test_linked_list_get_at ( void* expected, void* given );
+void test_linked_list_add_at ( void* expected, void* given );
 void test_linked_list_end 	 ( void* expected, void* given );
 void test_linked_list_start  ( void* expected, void* given );
 
@@ -70,6 +71,10 @@ int main ( int argc, char* argv[] )
 	test_linked_list_end( &add_int[4], linked_list_end( list ) );	
 
 	test_linked_list_start( &add_int[0], linked_list_start( list ) );
+
+	//linked_list_add_at( list, &add_int[5], 3 );
+
+	//test_linked_list_add_at( &add_int[5], linked_list_get_at( list, 3 ) );
 
 	return 0;
 }
